@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate("/quizzes")}
-            className="font-semibold text-white hover:text-orange-500 hover:bg-orange-500/10 px-3 py-1.5 rounded-md transition h-12"
+            className="font-semibold text-white hover:text-black bg-blue-600 px-3 py-1.5 rounded-md transition h-12"
           >
             Quizzes
           </button>
