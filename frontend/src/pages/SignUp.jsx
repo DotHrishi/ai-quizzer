@@ -57,7 +57,7 @@ const SignUp = () => {
     <Navbar />
     <div className="flex flex-col w-full h-full">
       <div style={{
-          background: "#000000",
+          background: "white",
           backgroundImage: `
         radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0),
         radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.18) 1px, transparent 0),

@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./config/db-config.js";
 import authRoutes from "./routes/authRoutes.js";
+import quizRoutes from "./routes/quizRoutes.js";
 import cors from "cors";
 
 const app = express();
@@ -15,14 +16,15 @@ app.use(cors({
 
 connectDB();
 
-const PORT=process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use("/api/auth", authRoutes);
+app.use("/api/quiz", quizRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running on ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
 });             

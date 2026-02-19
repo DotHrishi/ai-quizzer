@@ -1,17 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+
   const navigate = useNavigate();
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = 250; // how fast it fades
+
+      // calculate opacity (1 → 0)
+      const newOpacity = Math.max(1 - scrollY / maxScroll, 0.3); 
+      setOpacity(newOpacity);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="relative z-50 w-full bg-black border-b p-2">
-      {/* Shimmer Line */}
-
+    <nav className="relative z-50 w-full bg-black border-b p-2 sticky top-0">
       <div className="max-w-6xl mx-auto flex items-center justify-between py-3 px-4">
         {/* Logo */}
         <div
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/")}
           className="cursor-pointer transition-transform duration-300 hover:scale-105"
         >
           <img
@@ -24,7 +38,7 @@ export default function Navbar() {
         {/* Buttons */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => navigate("/quizzes")}
+            onClick={() => navigate("/giveQuizzes")}
             className="font-semibold text-white hover:text-black bg-blue-600 px-3 py-1.5 rounded-md transition h-12"
           >
             Quizzes
@@ -107,6 +121,9 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+      
+      {/* Blue line at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#002aff]" />
     </nav>
   );
 }
