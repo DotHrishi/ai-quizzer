@@ -1,8 +1,11 @@
 import express from "express";
-import connectDB from "./config/db-config.js";
+
 import authRoutes from "./routes/authRoutes.js";
 import quizRoutes from "./routes/quizRoutes.js";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -14,7 +17,6 @@ app.use(cors({
 }));
 
 
-connectDB();
 
 const PORT = process.env.PORT || 5000;
 

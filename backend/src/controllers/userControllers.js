@@ -14,7 +14,6 @@ export const registerUser = async (req, res) => {
     console.error("REGISTER ERROR:", error);
 
     if (error.code === "23505") {
-      // UNIQUE violation
       return res.status(400).json({
         message: "Username or email already exists"
       });

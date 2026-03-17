@@ -44,7 +44,7 @@ export default function Home() {
 <>
     <Navbar />
 
-      <div className="bg-white text-black min-h-screen relative">
+      <div className="bg-white text-black min-h-screen relative dark:bg-neutral-950 dark:text-white transition-colors duration-300">
 
   {/* GLOW FOR HERO (TOP-RIGHT) */}
   <div className="absolute top-0 right-0 w-[420px] h-[320px] bg-[#0051ff] blur-[180px] rounded-full pointer-events-none z-0"></div>
@@ -52,7 +52,7 @@ export default function Home() {
   {/* Hero */}
   <div className="relative w-full md:max-w-1/2 md:ml-12 px-4 py-10 md:py-20 text-left break-words z-10">
 
-    <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-black via-[#183fa0] to-[#1900ff] text-transparent bg-clip-text">
+    <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-black via-[#183fa0] to-[#1900ff] dark:from-white dark:via-blue-400 dark:to-[#1900ff] text-transparent bg-clip-text">
       Welcome to Quizzette!
     </h1>
 
@@ -104,11 +104,11 @@ export default function Home() {
           {features.map((f, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl p-6 h-48 flex flex-col border-gray-200 items-center justify-center hover:-translate-y-1 hover:border-blue-600 border-4 hover:shadow-2xl transition-all"
+              className="bg-white dark:bg-neutral-900 rounded-xl p-6 h-48 flex flex-col border-gray-200 dark:border-neutral-800 items-center justify-center hover:-translate-y-1 hover:border-blue-600 dark:hover:border-blue-500 border-4 hover:shadow-2xl transition-all"
             >
               <div className="text-3xl mb-2">{f.icon}</div>
-              <h3 className="text-black font-semibold text-lg mb-1">{f.title}</h3>
-              <p className="text-black text-sm">{f.description}</p>
+              <h3 className="text-black dark:text-white font-semibold text-lg mb-1">{f.title}</h3>
+              <p className="text-black dark:text-gray-300 text-sm">{f.description}</p>
             </div>
           ))}
         </div>

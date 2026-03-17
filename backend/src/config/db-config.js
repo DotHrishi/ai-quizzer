@@ -1,16 +1,22 @@
+import pkg from "pg";
 import dotenv from "dotenv";
-import { neon } from "@neondatabase/serverless";
 
 dotenv.config();
 
-export const sql = neon(process.env.DATABASE_URL);
+const { Pool } = pkg;
 
-export default function connectDB() {
-  try {
-    console.log("Neon database initialized.");
-    return true;
-  } catch (error) {
-    console.error("Database connection failed:", error);
-    return false;
-  }
-}
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+export const sql = async (strings, ...values) => {
+  const text = strings.reduce((acc, str, i) => {
+    return acc + str + (values[i] ? `$${i + 1}` : "");
+  }, "");
+
+  const result = await pool.query(text, values);
+  return result.rows;
+};

@@ -27,7 +27,7 @@ const Login = () => {
 
     try {
       const res = await toast.promise(
-        axios.post("http://localhost:5000/api/auth/login", {
+        axios.post(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/auth/login`, {
           email: formData.email,
           password: formData.password,
         }),
@@ -38,6 +38,8 @@ const Login = () => {
         }
       );
 
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      window.dispatchEvent(new Event("authChange"));
       setMessage(res.data.message);
       navigate("/");
     } catch (error) {

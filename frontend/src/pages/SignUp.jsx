@@ -28,7 +28,7 @@ const SignUp = () => {
 
     try {
       const res = await toast.promise(
-        axios.post("http://localhost:5000/api/auth/signup", {
+        axios.post(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/auth/signup`, {
           username: formData.username,
           email: formData.email,
           password: formData.password,
@@ -36,7 +36,7 @@ const SignUp = () => {
         {
           loading: "Registering user...",
           success: "Registration successful!, Please login now.",
-          error: "Error registering user!",
+          error: "User already exists!",
         },
         {
           success: {
