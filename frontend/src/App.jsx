@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-import ViewQuizzes from './pages/viewQuizzes';
-import MakeQuizzes from './pages/makeQuizzes';
+import ViewQuizzes from './pages/ViewQuizzes';
+import MakeQuizzes from './pages/MakeQuizzes';
 import TakeQuiz from './pages/TakeQuiz';
 
 function App() {
